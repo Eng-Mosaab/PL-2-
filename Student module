@@ -1,0 +1,36 @@
+import java.util.*;
+
+public class Student {
+    static FileManager file = new FileManager();
+    static Scanner input = new Scanner(System.in);
+
+    public static void examEntry(String studentId, String examId){
+        if(file.takenExam(studentId,examId)){
+            System.out.println("You've already taken this exam.");
+        }
+        else {
+            System.out.println("Taking the exam...");
+            file.addExamAttempts(studentId,examId);
+            System.out.println("Your exam attempt was added.");
+        }
+
+    }
+
+    public static void requestRecorrection(String studentId, String examId){
+        System.out.print("Enter your reason for re-correction: ");
+        String reason = input.nextLine();
+        file.recorrectionRequest(studentId,examId,reason);
+
+        System.out.println("Your request was submitted.");
+    }
+    public static void main(String[] args){
+        System.out.print("please enter you id: ");
+        String sId = input.nextLine();
+        System.out.print("enter the exam id: ");
+        String eId = input.nextLine();
+
+        examEntry(sId,eId);
+        System.out.println("***********************");
+        requestRecorrection(sId,eId);
+    }
+}
