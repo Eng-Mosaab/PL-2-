@@ -47,10 +47,10 @@ public class StudentServices {
 
     }
 
-    public static void examFeedback(String studentId, String examId) {
+    public static void examFeedback(String studentId, String examId , String feedback) {
         if (file.takenExam(studentId, examId)) {
             System.out.println("Send your feedback on exam " + examId);
-            String feedback = input.nextLine();
+            feedback = input.nextLine();
             file.examFeedback(studentId, examId, feedback);
         } else {
             System.out.println("You did not take this exam");

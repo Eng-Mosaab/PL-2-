@@ -458,7 +458,10 @@ class Subject {
     private String name;
     private Lecturer lecturer;
     private ArrayList<Student> students = new ArrayList<>();
-
+//    ياسمين محتاجة الجزء ده
+public ArrayList<Student> getStudents() {
+    return students;
+}
     public Subject(int id, String name){
         this.id = id;
         this.name = name;
@@ -477,6 +480,10 @@ class Subject {
 // ======= Subject Management =======
 class SubjectManagement {
     private ArrayList<Subject> subjects = new ArrayList<>();
+    //ياسمين محتاجة الجزء ده
+    public ArrayList<Subject> getSubjects() {
+    return subjects;
+}
 
     public void addSubject(Subject sub){
         subjects.add(sub);

@@ -1,4 +1,3 @@
-import java.util.*;
 import java.io.*;
 
 public class FileManager  {
@@ -12,6 +11,41 @@ public class FileManager  {
 //     3lshan a2asem el line el bakhdo men el file l parts a3rf astakhdemha.
      private String line;
      private String[] parts;
+     public boolean updateStudentInfo(String studentId, String email, String password) {
+    File inputFile = new File("data/student_data.txt");
+    File tempFile = new File("data/temp_student_data.txt");
+
+    try (
+        BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))
+    ) {
+        String line;
+        boolean updated = false;
+
+        while ((line = reader.readLine()) != null) {
+            String[] parts = line.split(",");
+            if (parts.length >= 3 && parts[0].equals(studentId)) {
+                writer.write(studentId + "," + email + "," + password);
+                writer.newLine();
+                updated = true;
+            } else {
+                writer.write(line);
+                writer.newLine();
+            }
+        }
+
+        writer.close();
+        reader.close();
+        if (!inputFile.delete()) return false;
+        if (!tempFile.renameTo(inputFile)) return false;
+
+        return updated;
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        return false;
+    }
+}
 
      public void saveStudent(Student student){
          try {
