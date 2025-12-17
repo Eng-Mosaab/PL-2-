@@ -586,8 +586,8 @@ class AccessToExamGui extends JFrame {
         ArrayList<Object[]> resultsList = new ArrayList<>();
        for (Subject sub : subjectService.getSubjects()) {
          for (Student s : sub.getStudents()) {
-          if (String.valueOf(s.getId()).equals(String.valueOf(student.getId()))) {
-            String grade = StudentServices.file.getGrade(student.getId(), String.valueOf(sub.getId()));
+          if (String.valueOf(s.getStudentId()).equals(String.valueOf(student.getStudentId()))) {
+            String grade = StudentServices.file.getGrade(student.getStudentId(), String.valueOf(sub.getId()));
             String status = (grade != null) ? "Published" : "Awaiting";
             resultsList.add(new Object[]{ sub.getId(), sub.getName(), (grade != null ? grade : "N/A"), status });
         }

@@ -462,12 +462,16 @@ class Subject {
 public ArrayList<Student> getStudents() {
     return students;
 }
+//ياسمين اللي كتبت ده 
+    public String getName(){ return name; }
+
     public Subject(int id, String name){
         this.id = id;
         this.name = name;
     }
 
     public int getId(){ return id; }
+
     public void setLecturer(Lecturer l){ this.lecturer = l; }
     public void addStudent(Student s){ students.add(s); }
 
